@@ -3,4 +3,8 @@ type Query{
     simpleStringAddArgument(name:String): String!
 #    simpleStringAddArguments(name:String): String!
     simpleStringAddArguments(name:String!,version:String): String!
+    customers:[Customer]! #! retourne une liste vide si pas de données
+    customerById(id:ID!) : Customer
+    customersByNames(name:String!):[Customer]
+    customersRangeAge(filter:AgeRange!):[Customer]
 }
