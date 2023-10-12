@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(staticName = "build")
+@AllArgsConstructor(staticName = "build")
 public class Customer {
     private Integer id;
     private String name;

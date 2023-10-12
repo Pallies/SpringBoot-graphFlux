@@ -10,11 +10,11 @@ import reactor.core.publisher.Mono;
 public class CustomerService {
 
     private final Flux<Customer> flux = Flux.just(
-            new Customer(1, "John", 20, "New York"),
-            new Customer(2, "Mary", 25, "Boston"),
-            new Customer(3, "Peter", 30, "Miami"),
-            new Customer(4, "Kate", 35, "Los Angeles"),
-            new Customer(5, "Joseph", 40, "Chicago")
+             Customer.build(1, "John", 20, "New York"),
+             Customer.build(2, "Mary", 25, "Boston"),
+             Customer.build(3, "Peter", 30, "Miami"),
+             Customer.build(4, "Kate", 35, "Los Angeles"),
+             Customer.build(5, "Joseph", 40, "Chicago")
     );
 
     public Flux<Customer> findAllCustomers() {
