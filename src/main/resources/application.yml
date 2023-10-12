@@ -2,9 +2,12 @@ spring:
 #    Configuration GRAPHQL
   graphql:
     schema:
-      locations: classpath:graphql/*.graphqls
+      locations: classpath:graphql/*
     path: /graphql
 #    Configuration GRAPHIQL
     graphiql:
       enabled: true
       path: /graphiql
+#    Configuration SERVER
+server:
+  port: 8080
