@@ -1,4 +1,4 @@
-package com.springboot.webflux.graphQL.entities;
+package com.springboot.webflux.graphQL.dto;
 
 
 import lombok.Data;
@@ -12,5 +12,4 @@ public class Customer {
     private Integer id;
     private String name;
     private Integer age;
-    private String city;
 }

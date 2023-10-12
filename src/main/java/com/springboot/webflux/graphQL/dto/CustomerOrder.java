@@ -1,4 +1,4 @@
-package com.springboot.webflux.graphQL.entities;
+package com.springboot.webflux.graphQL.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
