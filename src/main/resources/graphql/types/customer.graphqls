@@ -1,0 +1,14 @@
+type Customer{
+    id: ID!
+    name: String!
+    age: Int
+    city: String
+    orders: [CustomerOrder]!
+    ordersLimit(limit:Int!) : [CustomerOrder]!
+    ordersBatch: [CustomerOrder]!
+    ordersBatch_: [CustomerOrder]!
+}
+input AgeRange{
+    min: Int!
+    max: Int!
+}
