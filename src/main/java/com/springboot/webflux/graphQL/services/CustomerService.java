@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
+
 @Service
 public class CustomerService {
 
@@ -18,7 +20,7 @@ public class CustomerService {
     );
 
     public Flux<Customer> findAllCustomers() {
-        return flux;
+        return flux.delayElements(Duration.ofSeconds(1));
     }
     public Mono<Customer> findById(Integer id) {
         return flux

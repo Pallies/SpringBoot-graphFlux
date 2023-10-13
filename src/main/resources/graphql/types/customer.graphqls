@@ -3,11 +3,12 @@ type Customer{
     name: String!
     age: Int
     orders: [CustomerOrder]!
-    ordersLimit(limit:Int!) : [CustomerOrder]!
+    orders_:[CustomerOrder]!
+    ordersLimit(limit:Int!) : [CustomerOrder]! @deprecated( reason : "use ordersBatch instead")
     ordersBatch: [CustomerOrder]!
-    ordersBatch_: [CustomerOrder]!
+    ordersBatch_better: [CustomerOrder]!
     address:Address
-    account:Account
+    account:Account @deprecated( reason : "use accountBatch instead")
     accountBatch:Account
 }
 input AgeRange{

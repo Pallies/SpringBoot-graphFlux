@@ -4,6 +4,8 @@ type Query{
 #    simpleStringAddArguments(name:String): String!
     simpleStringAddArguments(name:String!,version:String): String!
     customers:[Customer]
+    customersOrders:[CustomersDetails]
+    customersOrders_better:[CustomersDetails]
     customerById(id:ID!) : Customer
     customersByNames(name:String!):[Customer]
     customersRangeAge(filter:AgeRange!):[Customer]

@@ -46,8 +46,9 @@ public class CustomerOrderService {
 
     //    simule une requête de style select * from TABLE where name = :name
     // retourne un flux d'une liste dont le paramètre est la clé du map ou par défaut une liste vide
-    public Flux<CustomerOrder> findByCustomerName(String name) {
-        return Flux.fromIterable(map.getOrDefault(name.toLowerCase(), Collections.emptyList()));
+    public Flux<CustomerOrder> findOrderByCustomerName(String name) {
+        return Flux.fromIterable(map.getOrDefault(name.toLowerCase(), Collections.emptyList()))
+                .delayElements(Duration.ofSeconds(1));
     }
 //----------------------------------------------------------------------------------------------------
     //    simule une requête de style select * from TABLE where name in (:names)
@@ -72,8 +73,7 @@ public class CustomerOrderService {
     }
 
     private Mono<List<CustomerOrder>> findByCustomerNameList(String name) {
-        return Mono.justOrEmpty(map.get(name.toLowerCase()))
-                .delayElement(Duration.ofMillis(ThreadLocalRandom.current().nextInt(0, 1000)));
+        return Mono.justOrEmpty(map.get(name.toLowerCase()));
     }
 
     /*

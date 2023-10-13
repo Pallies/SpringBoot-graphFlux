@@ -26,7 +26,7 @@ public class CustomerController {
     @Autowired
     private CustomerOrderService orderService;
 
-    //    @QueryMapping(name = "customers")
+//        @QueryMapping(name = "customers")
 //    public Flux<Customer> getCustomers() {
 //        return service.findAllCustomers();
 //    }
@@ -63,9 +63,10 @@ public class CustomerController {
      * problème la requête, pour les sous-objets, est effectuée à chaque appel
      * requête effectuer : select * from <TABLE> where <CUSTOMER> = :<CUSTOMER> || N requêtes
      */
+
     @SchemaMapping(typeName = "Customer", field = "orders")
     public Flux<CustomerOrder> getCustomersAll(Customer customer) {
-        return orderService.findByCustomerName(customer.getName());
+        return orderService.findOrderByCustomerName(customer.getName());
     }
 
     /**
@@ -74,7 +75,7 @@ public class CustomerController {
      */
     @SchemaMapping(typeName = "Customer", field = "ordersLimit")
     public Flux<CustomerOrder> getCustomersAll(Customer customer, @Argument Integer limit) {
-        return orderService.findByCustomerName(customer.getName()).take(limit);
+        return orderService.findOrderByCustomerName(customer.getName()).take(limit);
     }
     /**
      * cette approche permet de limiter les appels à la base de données
