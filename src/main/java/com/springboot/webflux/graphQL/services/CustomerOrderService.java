@@ -1,7 +1,7 @@
 package com.springboot.webflux.graphQL.services;
 
-import com.springboot.webflux.graphQL.entities.Customer;
-import com.springboot.webflux.graphQL.entities.CustomerOrder;
+import com.springboot.webflux.graphQL.dto.Customer;
+import com.springboot.webflux.graphQL.dto.CustomerOrder;
 import io.netty.util.internal.ThreadLocalRandom;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -54,10 +54,10 @@ public class CustomerOrderService {
     // /!\   toujours renvoyer une liste vide sur un objet obligatoire
 
     // METHODE 1 : liste ou liste vide convertie en flux
-    public Flux<List<CustomerOrder>> findByCustomerNameOrDefault(List<String> names) {
-        return Flux.fromIterable(names)
-                .map(this::findByCustomerNameListOrDefault);
-    }
+//    public Flux<List<CustomerOrder>> findByCustomerNameOrDefault(List<String> names) {
+//        return Flux.fromIterable(names)
+//                .map(this::findByCustomerNameListOrDefault);
+//    }
 
     private List<CustomerOrder> findByCustomerNameListOrDefault(String name) {
         return map.getOrDefault(name.toLowerCase(), Collections.emptyList());
