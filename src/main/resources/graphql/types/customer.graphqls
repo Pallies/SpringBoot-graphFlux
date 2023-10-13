@@ -2,11 +2,13 @@ type Customer{
     id: ID!
     name: String!
     age: Int
-    city: String
     orders: [CustomerOrder]!
     ordersLimit(limit:Int!) : [CustomerOrder]!
     ordersBatch: [CustomerOrder]!
     ordersBatch_: [CustomerOrder]!
+    address:Address
+    account:Account
+    accountBatch:Account
 }
 input AgeRange{
     min: Int!
