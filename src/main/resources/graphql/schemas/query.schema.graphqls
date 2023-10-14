@@ -1,12 +1,12 @@
 type Query{
     simpleString: String!
     simpleStringAddArgument(name:String): String!
-#    simpleStringAddArguments(name:String): String!
+    simpleStringAddArguments(name:String): String!
     simpleStringAddArguments(name:String!,version:String): String!
+#    Controller Customer
     customers:[Customer]
-    customersOrders:[CustomersDetails]
-    customersOrders_better:[CustomersDetails]
     customerById(id:ID!) : Customer
     customersByNames(name:String!):[Customer]
+#    possible de définir un objet en Argument (définir un type grapql et un dta java)
     customersRangeAge(filter:AgeRange!):[Customer]
 }

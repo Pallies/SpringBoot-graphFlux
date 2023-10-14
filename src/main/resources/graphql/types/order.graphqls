@@ -1,4 +1,4 @@
-type CustomerOrder{
+type Order{
     id:ID!
     description:String!
 }

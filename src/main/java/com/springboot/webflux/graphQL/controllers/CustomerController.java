@@ -2,8 +2,8 @@ package com.springboot.webflux.graphQL.controllers;
 
 import com.springboot.webflux.graphQL.dto.AgeRange;
 import com.springboot.webflux.graphQL.dto.Customer;
-import com.springboot.webflux.graphQL.dto.CustomerOrder;
-import com.springboot.webflux.graphQL.services.CustomerOrderService;
+import com.springboot.webflux.graphQL.dto.Order;
+import com.springboot.webflux.graphQL.services.OrderService;
 import com.springboot.webflux.graphQL.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -24,12 +24,8 @@ public class CustomerController {
     @Autowired
     private CustomerService service;
     @Autowired
-    private CustomerOrderService orderService;
+    private OrderService orderService;
 
-//        @QueryMapping(name = "customers")
-//    public Flux<Customer> getCustomers() {
-//        return service.findAllCustomers();
-//    }
     @QueryMapping("customers")
     public Flux<Customer> getCustomers() {
         return service.findAllCustomers();
@@ -65,7 +61,7 @@ public class CustomerController {
      */
 
     @SchemaMapping(typeName = "Customer", field = "orders")
-    public Flux<CustomerOrder> getCustomersAll(Customer customer) {
+    public Flux<Order> getCustomersAll(Customer customer) {
         return orderService.findOrderByCustomerName(customer.getName());
     }
 
@@ -74,7 +70,7 @@ public class CustomerController {
      * variante de la méthode précédente, cette approche permet de limiter les appels à la base de données
      */
     @SchemaMapping(typeName = "Customer", field = "ordersLimit")
-    public Flux<CustomerOrder> getCustomersAll(Customer customer, @Argument Integer limit) {
+    public Flux<Order> getCustomersAll(Customer customer, @Argument Integer limit) {
         return orderService.findOrderByCustomerName(customer.getName()).take(limit);
     }
     /**
@@ -83,15 +79,15 @@ public class CustomerController {
      * requête effectuer : select * from <TABLE> where <CUSTOMER> in (All:<CUSTOMER>) || 1 requête
      */
     @BatchMapping(typeName = "Customer", field = "ordersBatch")
-    public Flux<List<CustomerOrder>> getCustomersBatch(List<Customer> list) {
+    public Flux<List<Order>> getCustomersBatch(List<Customer> list) {
         return orderService.findByCustomerName(list.stream().map(Customer::getName).collect(toList()));
     }
 
     /**
      * idem avec une approche différente pour l'agrégation des données
      */
-    @BatchMapping(typeName = "Customer", field = "ordersBatch_")
-    public Mono<Map<Customer, List<CustomerOrder>>> getCustomersBatch_(List<Customer> list) {
+    @BatchMapping(typeName = "Customer", field = "ordersBatch2")
+    public Mono<Map<Customer, List<Order>>> getCustomersBatch_(List<Customer> list) {
         return orderService.getMap(list);
     }
 }

@@ -2,12 +2,17 @@ type Customer{
     id: ID!
     name: String!
     age: Int
-    orders: [CustomerOrder]!
-    orders_:[CustomerOrder]!
-    ordersLimit(limit:Int!) : [CustomerOrder]! @deprecated( reason : "use ordersBatch instead")
-    ordersBatch: [CustomerOrder]!
-    ordersBatch_better: [CustomerOrder]!
+    #    -> inclus une liste Order
+    orders: [Order]!
+    orders2:[Order]!
+    #    -> inclus une liste Order avec une limite
+    ordersLimit(limit:Int!) : [Order]! @deprecated( reason : "use ordersBatch instead")
+    #    intégration d'un objet dans un autre avec un traitement parallèle
+    ordersBatch: [Order]!
+    ordersBatch2: [Order]!
+    #    -> inclus une Adresse
     address:Address
+    #    -> inclus un compte
     account:Account @deprecated( reason : "use accountBatch instead")
     accountBatch:Account
 }

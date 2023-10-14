@@ -9,7 +9,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor(staticName = "build")
 @AllArgsConstructor(staticName = "build")
-public class CustomerOrder {
+public class Order {
     private UUID id;
     private String description;
 }
