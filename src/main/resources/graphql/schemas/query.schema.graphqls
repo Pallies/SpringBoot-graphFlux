@@ -1,7 +1,6 @@
 type Query{
     simpleString: String!
     simpleStringAddArgument(name:String): String!
-    simpleStringAddArguments(name:String): String!
     simpleStringAddArguments(name:String!,version:String): String!
 #    Controller Customer
     customers:[Customer]

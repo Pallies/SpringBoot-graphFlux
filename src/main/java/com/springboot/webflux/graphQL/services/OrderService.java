@@ -47,8 +47,7 @@ public class OrderService {
     //    simule une requête de style select * from TABLE where name = :name
     // retourne un flux d'une liste dont le paramètre est la clé du map ou par défaut une liste vide
     public Flux<Order> findOrderByCustomerName(String name) {
-        return Flux.fromIterable(map.getOrDefault(name.toLowerCase(), Collections.emptyList()))
-                .delayElements(Duration.ofSeconds(1));
+        return Flux.fromIterable(map.getOrDefault(name.toLowerCase(), Collections.emptyList()));
     }
 //----------------------------------------------------------------------------------------------------
     //    simule une requête de style select * from TABLE where name in (:names)

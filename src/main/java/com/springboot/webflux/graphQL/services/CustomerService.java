@@ -20,7 +20,7 @@ public class CustomerService {
     );
 
     public Flux<Customer> findAllCustomers() {
-        return flux.delayElements(Duration.ofSeconds(1));
+        return flux;
     }
     public Mono<Customer> findById(Integer id) {
         return flux
